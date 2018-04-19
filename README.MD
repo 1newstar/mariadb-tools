@@ -8,8 +8,8 @@
 
 ## Tools
 
-- [ ] [PT](pt/README.MD)
-- [ ] Sysbench
+- [x] PT v3.0.8[^1]
+- [x] Sysbench v1.0.14[^2]
 - [ ] mysql-utils
 - [ ] mysql-shell
 - [ ] mysql-sys
@@ -39,4 +39,4 @@
 
 ## Footnotes
 
-[^2]: https://waffle.io/innotop/innotop
+[^1]: https://shawn0915.github.io/mysql/2018/02/23/about-percona-toolkit.html
