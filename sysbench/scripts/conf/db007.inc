@@ -1,10 +1,10 @@
-# Configuration file for host: pitbull
+# Configuration file for host: db007
 #
-# OS: Ubuntu 10.10
+# OS: CentOS 7.4
 # Platform: x86_64
-# CPU: Two socket hexa-core Intel Xeon X5660 @ 2.80GHz
-# RAM: 23GB
-# Disk(s): 1 x ST3500320NS S-ATA
+# CPU: Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz
+# RAM: 4GB
+# Disk(s):
 
 #
 # Adjust the following paths according to your installation.

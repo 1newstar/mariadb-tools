@@ -108,7 +108,7 @@ LOOP_COUNT=3
 # We need at least 1 GB disk space in our $WORK_DIR.
 SPACE_LIMIT=1000000
 
-# Interval in seconds for monitoring system status like disk IO,
+# Interval in seconds for healthcheck system status like disk IO,
 # CPU utilization, and such.
 MONITOR_INTERVAL=10
 
@@ -278,7 +278,7 @@ echo "Warm up time is: $WARM_UP_TIME" >> ${RESULT_DIR}/${TODAY}/${PRODUCT}/sysbe
 echo "Run time is: $RUN_TIME" >> ${RESULT_DIR}/${TODAY}/${PRODUCT}/sysbench_options.txt
 
 #
-# Clean up possibly left over monitoring processes.
+# Clean up possibly left over healthcheck processes.
 #
 killall -9 iostat
 killall -9 mpstat

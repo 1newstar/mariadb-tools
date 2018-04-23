@@ -1,0 +1,6 @@
+# Used by healthcheck to make sure it doesn't mistakenly report container
+# CREATE USER 'healthchecker'@'localhost' IDENTIFIED BY 'healthcheckpass';
+# FLUSH PRIVILEGES;
+[client]
+user=healthchecker
+password=healthcheckpass
