@@ -28,3 +28,10 @@ ps -eo pid,pcpu,size,rss,cmd | sort -rn -k 2 | head -n 11 | grep -iv 'PID.*CPU.*
 echo
 echo
 
+echo "#5# Check time sync by ntp."
+systemctl status ntpd
+ntpq -p
+echo
+echo
+
+echo "# The End ####################################################"
