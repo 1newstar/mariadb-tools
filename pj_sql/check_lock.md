@@ -1,6 +1,38 @@
 # Common Use SQL - Lock
 
 
+* ## 查看当前InnoDB锁等待情况
+```mysql
+SELECT r.trx_id waiting_trx_id,
+r.trx_mysql_thread_id waiting_thread,
+left(r.trx_query,20) waiting_query, -- this is real
+concat(concat(lw.lock_type, ' '), lw.lock_mode) waiting_for_lock,
+b.trx_id blocking_trx_id,
+b.trx_mysql_thread_id blocking_thread,
+left(b.trx_query,20) blocking_query, -- this is just current
+concat(concat(lb.lock_type, ' '), lb.lock_mode) blocking_lock
+FROM information_schema.innodb_lock_waits w
+INNER JOIN information_schema.innodb_trx b ON b.trx_id = w.blocking_trx_id
+INNER JOIN information_schema.innodb_trx r ON r.trx_id = w.requesting_trx_id
+INNER JOIN information_schema.innodb_locks lw ON lw.lock_trx_id = r.trx_id
+INNER JOIN information_schema.innodb_locks lb ON lb.lock_trx_id = b.trx_id;
+
+
+SELECT distinct
+b.trx_id blocking_trx_id,
+b.trx_mysql_thread_id blocking_thread,
+left(b.trx_query,20) blocking_query, -- this is just current
+concat(concat(lb.lock_type, ' '), lb.lock_mode) blocking_lock,
+now() - trx_started blocking_time_sec
+FROM information_schema.innodb_lock_waits w
+LEFT JOIN information_schema.innodb_lock_waits r on w.blocking_trx_id = r.requesting_trx_id
+INNER JOIN information_schema.innodb_trx b ON b.trx_id = w.blocking_trx_id
+INNER JOIN information_schema.innodb_locks lb ON lb.lock_trx_id = b.trx_id
+where r.requested_lock_id is null;
+
+```
+
+
 * ## 查看当前有无行锁等待事件
 > 优化建议：
 > - 若当前有行锁等待，则有可能导致锁超时被回滚，事务失败；

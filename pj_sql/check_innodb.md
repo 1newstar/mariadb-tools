@@ -18,3 +18,10 @@ select table_name, count(*), sum(NUMBER_RECORDS),
  information_schema.innodb_buffer_page where
  table_name = '`test`.`t1`' group by old_block;
 ```
+
+* ## InnoDB Buffer Pool 命中率
+```
+mysqladmin ext -uroot | grep -i innodb_buffer_pool
+```
+
+InnoDB缓存池命中率=(1-Innodb_buffer_pool_reads/Innodb_buffer_pool_read_requests)*100
