@@ -3,8 +3,9 @@
 ## Environment
 
 - CentOS 7.4
-- MariaDB v10.2.14
 - Python v3.6.5
+- MariaDB v10.2.14
+- InnoDB v5.7.21
 
 ## Tools
 
@@ -14,6 +15,7 @@
 - [x] innotop[^4]
 - [x] ozadba[^5]
 - [x] galera-status[^6]
+- [x] mytop
 
 
 // todo
@@ -23,7 +25,7 @@
 - [ ] benchmarker
 - [ ] healthy-check
 - [ ] mysql-awr
-
+- [ ] common_schema
 
 
 
